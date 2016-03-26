@@ -1,0 +1,908 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+***************************************************************************************************
+ Color Chief - activity_main.xml - user interface layout for the MainActivity
+***************************************************************************************************
+
+ Copyright 2016 Bergen Fletcher
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ You may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+***************************************************************************************************
+-->
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TabHost
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tabHost"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:orientation="horizontal"></TabWidget>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/tabImageView"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical|center|center_horizontal">
+
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/imageViewTableRow"
+                        android:layout_gravity="center"
+                        android:gravity="center_vertical|center_horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+
+                                android:layout_weight="1"
+
+                                android:id="@+id/imageView"
+                                android:clickable="true"
+                                android:scaleType="centerInside"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent" />
+
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/buttonImageClose"
+                                android:layout_alignTop="@+id/imageView"
+                                android:layout_alignRight="@+id/imageView"
+                                android:src="@drawable/ic_action_image_close"
+                                android:background="#00ffffff"
+                                android:onClick="closeImage"
+                                android:visibility="invisible"
+                                android:maxHeight="48dp"
+                                android:minHeight="48dp"
+                                android:longClickable="false"
+                                android:maxWidth="48dp"
+                                android:minWidth="48dp" />
+                        </RelativeLayout>
+
+                    </TableRow>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tabSettings"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:nestedScrollingEnabled="false">
+
+                    <ScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/scrollView" >
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/settings_title_text_size"></TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <View
+                                    android:id="@+id/line0"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_weight="1"
+                                    android:background="#FF909090"
+                                    android:padding="2dp" />
+
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Source ICC Profile (Image Profile) :"
+                                    android:id="@+id/textViewICCinTitle"
+                                    android:textColor="@color/colorSettingsTextTitle"
+                                    android:textSize="@dimen/settings_title_text_size" />
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="..."
+                                        android:id="@+id/textViewICCinFileName"
+                                        android:textIsSelectable="true"
+                                        android:autoText="false"
+                                        android:background="@color/background_material_light"
+                                        android:outlineProvider="bounds"
+                                        android:textColor="@color/primary_text_default_material_light"
+                                        android:minWidth="100dp"
+                                        android:nestedScrollingEnabled="false"
+                                        android:layout_alignParentStart="false"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_centerVertical="true"
+                                        android:layout_toLeftOf="@+id/buttonLoadICCin"
+                                        android:textSize="@dimen/settings_filename_text_size" />
+
+                                    <ImageButton
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/buttonLoadICCin"
+                                        android:src="@drawable/ic_action_folder_open"
+                                        android:onClick="openICCFile"
+                                        android:layout_alignParentLeft="false"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerVertical="true" />
+
+                                </RelativeLayout>
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <View
+                                    android:id="@+id/line1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_weight="1"
+                                    android:background="#FF909090"
+                                    android:padding="2dp" />
+
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" >
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Output ICC Profile (Display Profile) :"
+                                    android:id="@+id/textViewICCoutTitle"
+                                    android:textColor="@color/colorSettingsTextTitle"
+                                    android:textSize="@dimen/settings_title_text_size" />
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" >
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="..."
+                                        android:id="@+id/textViewICCoutFileName"
+                                        android:textIsSelectable="true"
+                                        android:autoText="false"
+                                        android:background="@color/background_material_light"
+                                        android:outlineProvider="bounds"
+                                        android:textColor="@color/primary_text_default_material_light"
+                                        android:minWidth="100dp"
+                                        android:nestedScrollingEnabled="false"
+                                        android:layout_alignParentStart="false"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_centerVertical="true"
+                                        android:layout_toLeftOf="@+id/buttonLoadICCout"
+                                        android:textSize="@dimen/settings_filename_text_size" />
+
+                                    <ImageButton
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/buttonLoadICCout"
+                                        android:src="@drawable/ic_action_folder_open"
+                                        android:onClick="openICCFile"
+                                        android:layout_alignParentLeft="false"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerVertical="true" />
+
+                                </RelativeLayout>
+
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <View
+                                    android:id="@+id/line2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_weight="1"
+                                    android:background="#FF909090"
+                                    android:padding="2dp" />
+
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="L* (Lightness) Mapping:"
+                                    android:id="@+id/textViewLightnessMappingTitle"
+                                    android:textColor="@color/colorSettingsTextTitle"
+                                    android:textSize="@dimen/settings_title_text_size" />
+
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <RadioGroup
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/radioGroupLightness"
+                                    android:layout_gravity="right"
+                                    android:gravity="fill_horizontal|right"
+                                    android:showDividers="middle|beginning|end"
+                                    android:divider="@android:color/darker_gray"
+                                    android:dividerPadding="1dp">
+
+                                    <RadioButton
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Source ICC Profile"
+                                        android:id="@+id/radioButtonLin"
+                                        android:singleLine="true"
+                                        android:layout_gravity="right"
+                                        android:button="@null"
+                                        android:drawablePadding="5dp"
+                                        android:drawableRight="@android:drawable/btn_radio"
+                                        android:gravity="fill_horizontal|center_vertical|right"
+                                        android:textColor="@color/colorSettingsTextSecondary"
+                                        android:textSize="@dimen/settings_radio_text_size"
+                                        android:onClick="updateSettings" />
+
+                                    <RadioButton
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Output ICC Profile"
+                                        android:id="@+id/radioButtonLout"
+                                        android:layout_gravity="right"
+                                        android:checked="true"
+                                        android:singleLine="true"
+                                        android:button="@null"
+                                        android:drawablePadding="5dp"
+                                        android:drawableRight="@android:drawable/btn_radio"
+                                        android:gravity="fill_horizontal|center_vertical|right"
+                                        android:textColor="@color/colorSettingsTextSecondary"
+                                        android:textSize="@dimen/settings_radio_text_size"
+                                        android:onClick="updateSettings" />
+                                </RadioGroup>
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <View
+                                    android:id="@+id/line3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_weight="1"
+                                    android:background="#FF909090"
+                                    android:padding="2dp" />
+
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="C* (Chroma) Mapping:"
+                                    android:id="@+id/textViewChromaMappingTitle"
+                                    android:textColor="@color/colorSettingsTextTitle"
+                                    android:textSize="@dimen/settings_title_text_size" />
+
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <RadioGroup
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/radioGroupChroma"
+                                    android:layout_gravity="right"
+                                    android:gravity="fill_horizontal|right"
+                                    android:showDividers="middle|beginning|end"
+                                    android:divider="@android:color/darker_gray"
+                                    android:dividerPadding="1dp">
+
+                                    <RadioButton
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Absolute Mapping"
+                                        android:id="@+id/radioButtonCin"
+                                        android:singleLine="true"
+                                        android:layout_gravity="right"
+                                        android:button="@null"
+                                        android:drawablePadding="5dp"
+                                        android:drawableRight="@android:drawable/btn_radio"
+                                        android:gravity="fill_horizontal|center_vertical|right"
+                                        android:textColor="@color/colorSettingsTextSecondary"
+                                        android:textSize="@dimen/settings_radio_text_size"
+                                        android:onClick="updateSettings" />
+
+                                    <RadioButton
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Relative Mapping"
+                                        android:id="@+id/radioButtonCrelative"
+                                        android:layout_gravity="right"
+                                        android:checked="true"
+                                        android:singleLine="true"
+                                        android:button="@null"
+                                        android:drawablePadding="5dp"
+                                        android:drawableRight="@android:drawable/btn_radio"
+                                        android:gravity="fill_horizontal|center_vertical|right"
+                                        android:textColor="@color/colorSettingsTextSecondary"
+                                        android:textSize="@dimen/settings_radio_text_size"
+                                        android:onClick="updateSettings" />
+                                </RadioGroup>
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <SeekBar
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/seekBarChromaPowerFactor" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Chroma Scale Power Factor"
+                                        android:id="@+id/textViewChromaPowerFactor"
+                                        android:textColor="@color/colorSettingsTextSecondary"
+                                        android:textSize="@dimen/settings_radio_text_size"
+                                        android:gravity="center_horizontal"
+                                        android:layout_below="@+id/seekBarChromaPowerFactor"
+                                        android:layout_centerHorizontal="true" />
+                                </RelativeLayout>
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <View
+                                    android:id="@+id/line4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_weight="1"
+                                    android:background="#FF909090"
+                                    android:padding="2dp" />
+
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"></TableRow>
+
+                        </LinearLayout>
+                    </ScrollView>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tabAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <WebView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/webViewAbout" />
+
+                    <ScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/scrollView2"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textViewAbout" />
+                    </ScrollView>
+
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+
+    <LinearLayout android:id="@+id/overlayColorControl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#99000000"
+        android:clickable="true"
+        android:visibility="invisible"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:baselineAligned="false"
+        android:layout_alignParentBottom="false">
+
+
+    <GridLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:rowCount="1">
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="Color Control"
+                android:autoText="false"
+                android:elegantTextHeight="true"
+                android:textColor="#ffffffff"
+                android:textSize="20sp"
+                android:textIsSelectable="true"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:gravity="fill_horizontal|fill_vertical"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:layout_gravity="left|fill"
+                android:shadowColor="#ff000000"
+                android:shadowRadius="20" />
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_column="1"
+            android:layout_row="0">
+
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="\u2714"
+                android:id="@+id/acceptButton"
+                android:onClick="acceptButtonClick"
+                android:layout_margin="0dp"
+
+                style="@style/Base.TextAppearance.AppCompat.Small"
+                android:padding="0dp"
+                android:textSize="20sp"
+                android:textColor="#ff13bf30"
+                android:layout_row="0"
+                android:layout_column="2"
+                android:layout_gravity="right" />
+
+            <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="\u2716"
+                    android:id="@+id/cancelButton"
+                    android:onClick="cancelButtonClick"
+                    android:layout_margin="0dp"
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:padding="0dp"
+                    android:textSize="20sp"
+                    android:textColor="#ffcc1c0c"
+                    android:layout_row="0"
+                    android:layout_column="3"
+                    android:layout_gravity="right" />
+        </LinearLayout>
+
+    </GridLayout>
+
+        <GridLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="4"
+            android:rowCount="3">
+
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/colour11"
+                android:background="#FFFF0000"
+                android:layout_column="0"
+                android:layout_row="0" />
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/colour12"
+                android:background="#FFFF0000"
+                android:layout_column="1"
+                android:layout_row="0" />
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/colour13"
+                android:background="#FFFF0000"
+                android:layout_column="2"
+                android:layout_row="0" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="3"
+                android:layout_gravity="right"
+                android:layout_row="0">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:text="Hue"
+                    android:autoText="false"
+                    android:elegantTextHeight="true"
+                    android:textColor="#ffffffff"
+                    android:textSize="15sp"
+                    android:textIsSelectable="true"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:gravity="fill_horizontal|fill_vertical"
+                    android:singleLine="true"
+                    android:shadowColor="#ff000000"
+                    android:shadowRadius="20" />
+
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="\u276E"
+                    android:id="@+id/hueDownButton"
+                    android:onClick="hsvButtonClick"
+                    android:layout_margin="0dp"
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:padding="0dp"
+                    android:textSize="20dp"
+                    android:textColor="#ff000000" />
+
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="\u276F"
+                    android:id="@+id/hueUpButton"
+                    android:onClick="hsvButtonClick"
+                    android:layout_margin="0dp"
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:padding="0dp"
+                    android:textSize="20dp"
+                    android:textColor="#ff000000" />
+            </LinearLayout>
+
+
+
+
+
+
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+
+                android:id="@+id/colour21"
+                android:background="#FFFF0000"
+                android:layout_column="0"
+                android:layout_row="1" />
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+
+                android:id="@+id/colour22"
+                android:background="#ffcc4d33"
+                android:layout_column="1"
+                android:layout_row="1" />
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+
+                android:id="@+id/colour23"
+                android:background="#FFFF0000"
+                android:layout_column="2"
+                android:layout_row="1" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="3"
+                android:layout_gravity="right"
+                android:layout_row="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="Saturation"
+                android:autoText="false"
+                android:elegantTextHeight="true"
+                android:textColor="#ffffffff"
+                android:textSize="15sp"
+                android:textIsSelectable="true"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:gravity="fill_horizontal|fill_vertical"
+                android:singleLine="true"
+                android:shadowColor="#ff000000"
+                android:shadowRadius="20" />
+
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="\u276E"
+                android:id="@+id/saturationDownButton"
+                android:onClick="hsvButtonClick"
+                android:layout_margin="0dp"
+                android:layout_gravity="center"
+                style="@style/Base.TextAppearance.AppCompat.Small"
+                android:padding="0dp"
+                android:textSize="20dp"
+                android:textColor="#ff000000" />
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="\u276F"
+                android:id="@+id/saturationUpButton"
+                android:onClick="hsvButtonClick"
+                android:layout_margin="0dp"
+                android:layout_gravity="center"
+                style="@style/Base.TextAppearance.AppCompat.Small"
+                android:padding="0dp"
+                android:textSize="20dp"
+                android:textColor="#ff000000" />
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+
+                android:id="@+id/colour31"
+                android:background="#FFFF0000"
+                android:layout_column="0"
+                android:layout_row="2" />
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+
+                android:id="@+id/colour32"
+                android:background="#FFFF0000"
+                android:layout_column="1"
+                android:layout_row="2" />
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+
+                android:id="@+id/colour33"
+                android:background="#FFFF0000"
+                android:layout_column="2"
+                android:layout_row="2" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="3"
+                android:layout_gravity="right"
+                android:layout_row="2">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="Lightness"
+                android:autoText="false"
+                android:elegantTextHeight="true"
+                android:textColor="#ffffffff"
+                android:textSize="15sp"
+                android:textIsSelectable="true"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:gravity="fill_horizontal|fill_vertical"
+                android:singleLine="true"
+                android:shadowColor="#ff000000"
+                android:shadowRadius="20" />
+
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="\u276E"
+                android:id="@+id/lightnessDownButton"
+                android:onClick="hsvButtonClick"
+                android:layout_margin="0dp"
+                android:layout_gravity="center"
+                style="@style/Base.TextAppearance.AppCompat.Small"
+                android:padding="0dp"
+                android:textSize="20dp"
+                android:textColor="#ff000000" />
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="\u276F"
+                android:id="@+id/lightnessUpButton"
+                android:onClick="hsvButtonClick"
+                android:layout_margin="0dp"
+                android:layout_gravity="center"
+                style="@style/Base.TextAppearance.AppCompat.Small"
+                android:padding="0dp"
+                android:textSize="20dp"
+                android:textColor="#ff000000" />
+</LinearLayout>
+
+
+        </GridLayout>
+
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="2"
+            android:rowCount="1">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reset all colors"
+                android:id="@+id/buttonResetColorControlAll"
+                android:textColor="#000000"
+                android:onClick="resetColorControlAll" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reset"
+                android:id="@+id/buttonResetColorControl"
+                android:layout_column="1"
+                android:layout_gravity="right"
+                android:onClick="resetColorControl"
+                android:textColor="#000000" />
+
+        </GridLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="1"
+            android:rowCount="1"
+            android:background="@color/material_grey_300"
+            android:paddingTop="2dp"></GridLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:rowCount="3"
+            android:columnCount="1">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/radioGroupImageView">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View Original Image"
+                    android:id="@+id/radioButtonImageOriginal"
+                    android:button="@null"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@android:drawable/btn_radio"
+                    android:layout_gravity="right"
+                    android:gravity="center_vertical"
+                    android:onClick="setImageViewBitmap" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View Transformed Image"
+                    android:id="@+id/radioButtonImageTransformed"
+                    android:button="@null"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@android:drawable/btn_radio"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="right"
+                    android:checked="true"
+                    android:onClick="setImageViewBitmap" />
+            </RadioGroup>
+        </GridLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:id="@+id/overlayProgress">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.025" >
+
+            <ProgressBar
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:id="@+id/progressBar"
+                android:layout_weight="1"
+                android:layout_gravity="center" />
+        </TableRow>
+    </LinearLayout>
+
+</RelativeLayout>

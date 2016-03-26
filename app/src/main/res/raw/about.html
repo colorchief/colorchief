@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>About ColorChief</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.4.1  (Win32)">
+	<META NAME="CREATED" CONTENT="0;0">
+	<META NAME="CHANGED" CONTENT="20160326;11573196">
+	<STYLE TYPE="text/css">
+	<!--
+		H2.cjk { font-family: "SimSun" }
+		H2.ctl { font-family: "Lucida Sans" }
+		PRE.cjk { font-family: "NSimSun", monospace }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-CA" DIR="LTR">
+<H1><U>About ColorChief</U></H1>
+<DIV ID="Section5" DIR="LTR">
+	<PRE CLASS="western" STYLE="font-style: normal; font-weight: normal"><FONT COLOR="#000000"><FONT FACE="Menlo, Monaco, Consolas, Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 9pt">Copyright 2016 Bergen Fletcher</FONT></FONT></FONT>
+
+<FONT COLOR="#000000"><FONT FACE="Menlo, Monaco, Consolas, Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 9pt">Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="Menlo, Monaco, Consolas, Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 9pt">You may not use this software except in compliance with the License.</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="Menlo, Monaco, Consolas, Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 9pt">You may obtain a copy of the License at</FONT></FONT></FONT>
+
+<FONT COLOR="#000000">    </FONT><A HREF="http://www.apache.org/licenses/LICENSE-2.0"><FONT COLOR="#000000"><FONT FACE="Menlo, Monaco, Consolas, Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 9pt"><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">http://www.apache.org/licenses/LICENSE-2.0</SPAN></SPAN></FONT></FONT></FONT></A>
+
+<FONT COLOR="#000000"><FONT FACE="Menlo, Monaco, Consolas, Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 9pt">Unless required by applicable law or agreed to in writing, software</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="Menlo, Monaco, Consolas, Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 9pt">distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="Menlo, Monaco, Consolas, Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 9pt">WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="Menlo, Monaco, Consolas, Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 9pt">See the License for the specific language governing permissions and</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="Menlo, Monaco, Consolas, Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 9pt">limitations under the License.</FONT></FONT></FONT></PRE>
+</DIV>
+<DIV ID="Section2" DIR="LTR">
+	<P><FONT FACE="Arial, sans-serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Questions/Comments:
+	<A HREF="mailto:color.chief@gmail.com">colorchief.app@gmail.com</A> </SPAN></SPAN></FONT></FONT>
+	</P>
+	<P><FONT COLOR="#000000"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Source
+	code available at:</SPAN></SPAN></FONT></FONT></FONT><FONT COLOR="#333333">
+	</FONT><FONT COLOR="#333333"><FONT FACE="Arial, sans-serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal"><A HREF="https://github.com/colorchief/colorchief">https://github.com/colorchief/colorchief</A>
+	</SPAN></SPAN></FONT></FONT></FONT>
+	</P>
+</DIV>
+<P><BR><BR>
+</P>
+<DIV ID="Section1" DIR="LTR">
+	<H2 CLASS="western"><FONT FACE="Arial, sans-serif"><U>What is it?</U></FONT></H2>
+	<P><FONT FACE="Arial, sans-serif">A color management tool for
+	Android. </FONT>
+	</P>
+	<P><BR><BR>
+	</P>
+	<P><FONT FACE="Arial, sans-serif"><U>Current functionality includes:</U></FONT></P>
+	<UL>
+		<LI><P><FONT FACE="Arial, sans-serif">handling source and output
+		ICC profiles</FONT></P>
+		<LI><P><FONT FACE="Arial, sans-serif">implementing color
+		transformation on a static image preview</FONT></P>
+		<LI><P><FONT FACE="Arial, sans-serif">touch anywhere in the image
+		to view the difference between original color and transformed color</FONT></P>
+		<LI><P><FONT FACE="Arial, sans-serif">manipulate any color in the
+		transform manually with HSV controls (this currently does not work
+		very well)</FONT></P>
+	</UL>
+	<P><BR><BR>
+	</P>
+	<P><FONT FACE="Arial, sans-serif"><U>How does it work?</U></FONT></P>
+	<UL>
+		<LI><P><FONT FACE="Arial, sans-serif">a 9x9x9 3D LUT (Look-Up
+		Table) is created based on the source and output ICC profiles</FONT></P>
+		<LI><P><FONT FACE="Arial, sans-serif">LUT construction is performed
+		via an algorithm that operates in L*C*h* color space. </FONT>
+		</P>
+		<UL>
+			<LI><P><FONT FACE="Arial, sans-serif">The h* component sets the
+			output equal to the source. (Colors will always be hue corrected
+			to match the source intent.)</FONT></P>
+			<LI><P><FONT FACE="Arial, sans-serif">The L* component can be set
+			to maintain the source intent or follow the output mapping. When
+			setting to source in the case where the maximum for the source L*
+			is greater than the maximum output L*, clipping may occur.</FONT></P>
+			<LI><P><FONT FACE="Arial, sans-serif">The C* component can be set
+			to absolute (i.e. maintain the source intent) or relative mapping.
+			When setting to absolute when the source C* is greater C*,
+			clipping may occur. When setting to relative mapping, the C*
+			component is scaled to fit within the output color gamut. Scaling
+			is run through a power law such that low C* values are scaled to a
+			lesser degree than higher C* values. The power law factor is
+			adjustable by setting the slider.</FONT></P>
+		</UL>
+	</UL>
+	<P><BR><BR>
+	</P>
+	<P><FONT FACE="Arial, sans-serif"><U>Algorithm Overview:</U></FONT></P>
+	<P><FONT FACE="Arial, sans-serif">(1)</FONT></P>
+	<P><FONT FACE="Arial, sans-serif"><B>[Image RGB]</B> <I>={Source ICC
+	TRC}=&gt;</I> <B>[Linearized RGB]</B> <I>={Source ICC rgbXYZ}=&gt;</I>
+	<B>[Source L*C*h*]</B></FONT></P>
+	<P STYLE="font-weight: normal; text-decoration: none"><FONT FACE="Arial, sans-serif"><B>[Image
+	RGB]</B> <I>={Output ICC TRC}=&gt;</I> <B>[Linearized RGB]</B>
+	<I>={Output ICC rgbXYZ}=&gt;</I> <B>[Output L*C*h*]</B></FONT></P>
+	<P STYLE="font-weight: normal; text-decoration: none"><BR><BR>
+	</P>
+	<P STYLE="font-weight: normal; text-decoration: none"><FONT FACE="Arial, sans-serif">(2)</FONT></P>
+	<P STYLE="font-weight: normal; text-decoration: none"><FONT FACE="Arial, sans-serif">Output
+	L* = Input L* </FONT>
+	</P>
+	<P STYLE="font-weight: normal; text-decoration: none"><FONT FACE="Arial, sans-serif">or
+	</FONT>
+	</P>
+	<P STYLE="font-weight: normal; text-decoration: none"><FONT FACE="Arial, sans-serif">Output
+	L* = Output L*</FONT></P>
+	<P STYLE="font-weight: normal; text-decoration: none"><FONT FACE="Arial, sans-serif">,</FONT></P>
+	<P STYLE="font-weight: normal; text-decoration: none"><FONT FACE="Arial, sans-serif">Output
+	C* = Input C*</FONT></P>
+	<P STYLE="font-weight: normal; text-decoration: none"><FONT FACE="Arial, sans-serif">or
+	</FONT>
+	</P>
+	<P STYLE="font-weight: normal; text-decoration: none"><FONT FACE="Arial, sans-serif">Output
+	C* = 1 &ndash; maxScale * scaleC ^ powerFactor</FONT></P>
+	<P STYLE="font-weight: normal; text-decoration: none"><FONT FACE="Arial, sans-serif">where
+	maxScale and scaleC are determined using a LUT. The LUT contains a
+	mapping of input H* values to input C* values and C* scaling
+	factors. The LUT contains values for the primary and secondary
+	colors (RGBCMY). For each of these six colors, maxScale = Output C*
+	/ Input C*. The LUT uses linear interpolation to calculate C* and
+	maxScale values for a given input h* value. </FONT>
+	</P>
+	<P STYLE="font-weight: normal; text-decoration: none"><FONT FACE="Arial, sans-serif">powerFactor
+	is set per the slider in the settings screen.</FONT></P>
+	<P STYLE="font-weight: normal; text-decoration: none"><FONT FACE="Arial, sans-serif">,</FONT></P>
+	<P STYLE="font-weight: normal; text-decoration: none"><FONT FACE="Arial, sans-serif">Output
+	h* = Input h*</FONT></P>
+	<P><BR><BR>
+	</P>
+	<P STYLE="font-weight: normal; text-decoration: none"><FONT FACE="Arial, sans-serif">(3)</FONT></P>
+	<P STYLE="font-weight: normal; text-decoration: none"><FONT FACE="Arial, sans-serif"><B>[Output
+	L*C*h*]</B> <I>={Output ICC rgbXYZ}=&gt;</I> <B>[Linearized RGB]</B>
+	<I>={Output ICC TRC (Inverse)}=&gt;</I> <B>[Transformed Image RGB
+	values]</B></FONT></P>
+	<P><BR><BR>
+	</P>
+	<P STYLE="font-weight: normal; text-decoration: none"><FONT FACE="Arial, sans-serif">(4)</FONT></P>
+	<P STYLE="font-weight: normal; text-decoration: none"><FONT FACE="Arial, sans-serif">Steps
+	1-3 are run on the 729 (9x9x9) colors to generate 3D LUT mapping of
+	[Image RGB] =&gt; [Transformed Image RGB]</FONT></P>
+	<P><BR><BR>
+	</P>
+	<P STYLE="font-weight: normal; text-decoration: none"><FONT FACE="Arial, sans-serif">(5)</FONT></P>
+	<P STYLE="font-weight: normal; text-decoration: none"><FONT FACE="Arial, sans-serif">The
+	image is transformed by 3D LUT (trilinear interpolation). 3D LUT
+	operation is HW accelerated using GPU functionality via
+	Renderscript.</FONT></P>
+</DIV>
+<P><BR><BR>
+</P>
+<DIV ID="Section3" DIR="LTR">
+	<H2 CLASS="western"><U>Current Limitations </U>
+	</H2>
+	<P><FONT FACE="Arial, sans-serif">(to be addressed in future
+	updates; contributions welcomed)</FONT></P>
+	<UL>
+		<LI><P><FONT FACE="Arial, sans-serif">ICC profiles must implement
+		&ldquo;rTRC&rdquo;, &ldquo;gTRC&rdquo;, and &ldquo;bTRC&rdquo;
+		Tonal Reproduction Curve Tags and &ldquo;rXYZ&rdquo;, &ldquo;gXYZ&rdquo;,
+		&ldquo;bXYZ&rdquo; color point Tags. &ldquo;AToBx&rdquo;and &ldquo;BToAx&rdquo;
+		tags are currently ignored.</FONT></P>
+		<LI><P><FONT FACE="Arial, sans-serif">chromatic adaptation is not
+		handled (&ldquo;wtpt&rdquo; currently ignored)</FONT></P>
+		<LI><P>&ldquo;<FONT FACE="Arial, sans-serif">lumi&rdquo; tag is
+		ignored (perhaps should be used to scale L* values)</FONT></P>
+		<LI><P><FONT FACE="Arial, sans-serif">cannot apply to full image
+		and cannot save transformed image</FONT></P>
+		<LI><P><FONT FACE="Arial, sans-serif">cannot zoom, pan, etc. image
+		view</FONT></P>
+		<LI><P><FONT FACE="Arial, sans-serif">both source and output
+		profiles are assumed to be display class, therefore the source TRCs
+		are inverted and applied (instead should provide user option and/or
+		recognition of &ldquo;Device Class&rdquo; assigned in ICC profile) </FONT>
+		</P>
+		<LI><P><FONT FACE="Arial, sans-serif">look up table size is set to
+		9x9x9, but perhaps this can be made adjustable</FONT></P>
+	</UL>
+	<P><BR><BR>
+	</P>
+	<P><FONT FACE="Arial, sans-serif"><U>Other Potential Investigations:</U></FONT></P>
+	<UL>
+		<LI><P STYLE="text-decoration: none"><FONT FACE="Arial, sans-serif">take
+		control of backlight, fix to a given value (perhaps tied to &ldquo;lumi&rdquo;
+		tag in ICC profile)</FONT></P>
+		<LI><P STYLE="text-decoration: none"><FONT FACE="Arial, sans-serif">apply
+		to video (not sure if the transformation can operate fast enough)</FONT></P>
+		<LI><P STYLE="text-decoration: none"><FONT FACE="Arial, sans-serif">improve
+		the manual color transformation tool</FONT></P>
+		<LI><P STYLE="text-decoration: none"><FONT FACE="Arial, sans-serif">support
+		for color proofing (i.e. handling a 3<SUP>rd</SUP> ICC profile)</FONT></P>
+		<LI><P STYLE="text-decoration: none"><FONT FACE="Arial, sans-serif">CMYK
+		support (and perhaps other color spaces)</FONT></P>
+	</UL>
+	<P><BR><BR>
+	</P>
+</DIV>
+<P><BR><BR>
+</P>
+<DIV ID="Section4" DIR="LTR">
+	<H2 CLASS="western">Additional license information:</H2>
+	<PRE CLASS="western" STYLE="margin-bottom: 0.26cm; border: 1px solid #cccccc; padding: 0.24cm; font-style: normal; font-weight: normal; line-height: 142%; widows: 1; text-decoration: none"><FONT COLOR="#000000"><FONT FACE="Menlo, Monaco, Consolas, Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 9pt">Some of the navigation icons used in ColorChief are sourced from</FONT></FONT></FONT>
+<FONT COLOR="#000000"><SPAN STYLE="text-decoration: none"><FONT FACE="Menlo, Monaco, Consolas, Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 9pt"><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal"><A HREF="http://www.androidicons.com/">http://www.androidicons.com/</A> and the Creative Commons Attribution-ShareAlike 4.0 International Public License applies to these. </SPAN></SPAN></FONT></FONT></SPAN></FONT>
+<FONT COLOR="#000000"><FONT FACE="Menlo, Monaco, Consolas, Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 9pt">You may obtain a copy of the License at</FONT></FONT></FONT>
+<FONT COLOR="#000000"><SPAN STYLE="text-decoration: none">        </SPAN></FONT><A HREF="http://creativecommons.org/licenses/by-sa/4.0/"><FONT COLOR="#000000"><SPAN STYLE="text-decoration: none"><FONT FACE="Menlo, Monaco, Consolas, Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 9pt"><SPAN STYLE="font-style: normal"><U><SPAN STYLE="font-weight: normal">http://creativecommons.org/licenses/by-sa/4.0/</SPAN></U></SPAN></FONT></FONT></SPAN></FONT></A></PRE>
+</DIV>
+</BODY>
+</HTML>
